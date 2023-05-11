@@ -60,6 +60,7 @@ getLibssh2Version () {
 
 getOpensslVersion () {
   if type git >/dev/null 2>&1; then
+    #use http proto
     LIBSSL_VERSION=`git ls-remote --tags https://github.com/openssl/openssl.git | egrep "OpenSSL(_[0-9])+[a-zA-Z]?$" | cut -f 2,3,4 -d _ | sort -t _ -r | head -n 1 | tr _ .`
     LIBSSL_AUTO=true
   else
